@@ -29,6 +29,7 @@ while True:
     chain.generateDatabase(corpus)
 
     # 10 * 15 minutes = API update every 150 minutes
+    #  that will change based on new timing between tweets, *shrugs*
     print("Beginning tweet loop.")
     for x in xrange(9):
       print("Tweet " + str(x) + " of tweet loop. (max=9)")
@@ -49,11 +50,13 @@ while True:
 
       print("Sending tweet.")
       api.update_status(status=status)
-      print("Sleeping for 15 minutes...")
-      time.sleep(900) #15 minutes
+      print("Sleeping for 45 minutes...")
+      time.sleep(900*3) #45 minutes
 
   except tweepy.TweepError, e:
     print(e)
     print("TweepError was caught. Do not be alarmed.")
-    print("Sleeping for 1 hour.")                        # I do this in case everything is fucked
-    time.sleep(3600) #1 hour
+    #print("Sleeping for 1 hour.")                        # I do this in case everything is fucked
+    #time.sleep(3600) #1 hour
+    print("Sleeping for a minute.")
+    time.sleep(60)
